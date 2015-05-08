@@ -1,0 +1,30 @@
+<html>
+<div style="background-color:black; color:white; padding:20px;">
+
+<style>
+a:link    {color:white; background-color:transparent; text-decoration:none}
+a:visited {color:pink; background-color:transparent; text-decoration:none}
+a:hover   {color:white; background-color:transparent; text-decoration:underline}
+a:active  {color:#ff0000; background-color:transparent; text-decoration:underline}
+</style>
+<center>
+<h1> SHOPPING CART</h1></center>
+<center><h2> ITEMS LIST </h2></center>
+
+{% if item_list %}
+    <ul>
+	{% for item in item_list %}
+			<li>{{item.name}}</li>
+	<form action = "/items/delete/{{item.id}}" method = "get">
+    <input type = "Submit" value = "delete">
+        </form>
+	{% endfor %}
+
+{% endif %}
+<center>
+	<form action = "/items/" method = "get">
+    <input type = "Submit" value = "SHOP">
+        </form>
+	</center>
+
+</html>

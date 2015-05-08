@@ -1,0 +1,62 @@
+<div style="background-color:black; color:white; padding:20px;">
+
+<style>
+a:link    {color:white; background-color:transparent; text-decoration:none}
+a:visited {color:pink; background-color:transparent; text-decoration:none}
+a:hover   {color:white; background-color:transparent; text-decoration:underline}
+a:active  {color:#ff0000; background-color:transparent; text-decoration:underline}
+</style>
+
+<html>
+ <center>
+<h1> ITEMS LIST </h1></center>
+{% if items %}
+    <ul>
+    {% for item in items %}
+        <li>{{ item.name }}</li>
+       	<p> Cost($): 	
+       		{{ item.price }} </p>
+        <p> Description:
+        	{{ item.description }}</p>
+            {{item.id}}
+
+    <form action = "/items/cart/{{item.id}}" method = "get">
+    <input type = "Submit" value = "BUY">
+        </form>
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No items are available.</p>
+{% endif %}
+<center>
+ <div class="pagination">
+    <span class="step-links">
+        {% if items.has_previous %}
+            <a href="?page={{ items.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ items.number }} of {{ items.paginator.num_pages }}.
+        </span>
+
+        {% if items.has_next %}
+            <a href="?page={{ items.next_page_number }}">Next</a>
+        {% endif %}
+    </span>
+</div>
+</center>
+
+<form action = "/items/" method = "get">
+    <input name = "search" type = "text" >
+    <input type = "submit" value = "submit">
+</form>
+
+<center>
+    <h3> Price Filter</h3>
+<a href="?price=1">$0-$25</a>
+<a href="?price=2">$25-$200</a>
+<a href="?price=3">$200+</a>
+</center>
+
+</html>

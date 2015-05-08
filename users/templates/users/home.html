@@ -1,0 +1,24 @@
+<html>
+<div style="background-color:black; color:white; padding:20px;">
+
+<style>
+a:link    {color:white; background-color:transparent; text-decoration:none}
+a:visited {color:pink; background-color:transparent; text-decoration:none}
+a:hover   {color:white; background-color:transparent; text-decoration:underline}
+a:active  {color:#ff0000; background-color:transparent; text-decoration:underline}
+</style>
+
+<title> Diva Shop home </title>
+<body>
+	<center><h1> DIVA SHOP</h1>
+	<p>MEMBERS ONLY</p>
+	<form action="/users/log_out" method="post">
+		{% csrf_token %}
+		<input type = "submit" value = "log Out">
+		<br>
+	</form>
+	<a href="/items/">SHOP</a>
+
+
+</center>
+	</body
