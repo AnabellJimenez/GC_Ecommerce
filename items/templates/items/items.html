@@ -23,12 +23,13 @@ a:active  {color:#ff0000; background-color:transparent; text-decoration:underlin
     <form action = "/items/cart/{{item.id}}" method = "get">
     <input type = "Submit" value = "BUY">
         </form>
-
     {% endfor %}
+
     </ul>
 {% else %}
     <p>No items are available.</p>
 {% endif %}
+
 <center>
  <div class="pagination">
     <span class="step-links">

@@ -1,18 +1,11 @@
-<html>
-<div style="background-color:black; color:white; padding:20px;">
+{% include "ec/base.html" %}
+{% block content %}
 
-<style>
-a:link    {color:white; background-color:transparent; text-decoration:none}
-a:visited {color:pink; background-color:transparent; text-decoration:none}
-a:hover   {color:white; background-color:transparent; text-decoration:underline}
-a:active  {color:#ff0000; background-color:transparent; text-decoration:underline}
-</style>
-
-<title> Diva Shop </title>
 <body>
-	<center><h1> DIVA SHOP</h1>
+	<center>
 	<p><a href = "http://127.0.0.1:8000/users/">Register</a></p>
 	<p><a href = "http://127.0.0.1:8000/users/log_in/">log In</a></p>
 </center>
 	</body>
 </html>
+	{% endblock %}

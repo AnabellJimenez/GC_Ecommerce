@@ -6,6 +6,7 @@ from django.shortcuts import render_to_response
 from django.core import serializers
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 # Create your views here.
 def items(request):
@@ -59,49 +60,47 @@ def show(request, item_id):
 def cart(request, item_id):
 	
 	# verify user?
-	print "USERNAME: " , user.username
 	if not request.user.is_authenticated():
 		return HttpResponse("CANNOT ACCESS PAGE")
 
 	#Does user have order?
-	o = Order.objects.filter(pk=request.user.id, order_status = 1)
-	# print o
+	o = Order.objects.filter(user=request.user, order_status = 1)
+	# print "order query : " , o
+	# print request.user.id
+	# print request.user
 
 	if o:
-		print "added item to order"
+		# print "added item to order"
 		o[0].user = request.user
 		o[0].save() 
 		o[0].items.add(Items.objects.get(pk=item_id))
 		o[0].save()
 		item_list = o[0].items.all()
-		print "item list: \n", o[0].items.all()
+		# print "item list: \n", o[0].items.all()
 		return render(request, 'items/cart.html', {'item_list':item_list})
 		
 	else:
 		o = Order()
-		print "\nnew order created\n"
-		return HttpResponse("new order created")
-		# o.order_status = 1
-		# o.user = request.user
-		# o.save()
-		# o.items.add(Items.objects.get(pk=item_id))
-		# o.save()
-		# item_list = o.items.all()
-		# return render(request, 'items/cart.html', {'item_list':item_list})
+		o.order_status = 1
+		o.user = request.user
+		o.save()
+		o.items.add(Items.objects.get(pk=item_id))
+		o.save()
+		item_list = o.items.all()
+		# print Order.objects.filter(pk=request.user.id, order_status = 1)
+		return render(request, 'items/cart.html', {'item_list':item_list})
 		
 
 def delete(request, item_id):
-	pass
-# 	o = Order.objects.filter(pk=request.user.id, order_status = 1)
-# 	print o
-# 	# o[0].items. = request.user
-# 	# o[0].save()
-# 	# i_delete = Items.objects.get(item_id)
-# 	# print i_delete
-# 	return HttpResponse("item to delete")
-# 	# o[0].save()
-# 	# item_list = o[0].items.all()
-# 	# return render(request, 'items/cart.html', {'item_list':item_list})
+	#find order for the signed in user
+	o = Order.objects.filter(user=request.user, order_status = 1) 
+
+	#identify item to delete from oder
+	i_delete = Items.objects.get(pk=item_id)
+	o[0].items.remove(i_delete) #Remove the item from the items in the order
+	item_list = o[0].items.all() #create an items list to pass into the dictionary
+	return render(request, 'items/cart.html', {'item_list':item_list})
+
 
 
 
