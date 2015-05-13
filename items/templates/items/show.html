@@ -1,11 +1,7 @@
-<div style="background-color:black; color:white; padding:20px;">
+{% include "ec/base.html" %}
 
-<style>
-a:link    {color:white; background-color:transparent; text-decoration:none}
-a:visited {color:pink; background-color:transparent; text-decoration:none}
-a:hover   {color:white; background-color:transparent; text-decoration:underline}
-a:active  {color:#ff0000; background-color:transparent; text-decoration:underline}
-</style>
+{% block content %}
+
 
 <h1>Item</h1>
 
@@ -16,6 +12,11 @@ a:active  {color:#ff0000; background-color:transparent; text-decoration:underlin
 {% else %}
 	<p>No items are available.</p>
 {% endif %}
+
+
+
+{% endblock %}
+
 
 
 <!-- {{item.name}} -->

@@ -1,14 +1,14 @@
 
+<head>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static "ec/base.css" %}" type="text/css"/>
 
+</head>
+<body> 
+	<!-- <h1 id="test"> Anabells page </h1> -->
+	<!-- <img src="{% static "ec/pic.jpg" %}" alt="My image"/> -->
 {% block content %}
 <div style="background-color:black; color:white; padding:20px;">
-
-<style>
-a:link    {color:white; background-color:transparent; text-decoration:none}
-a:visited {color:pink; background-color:transparent; text-decoration:none}
-a:hover   {color:white; background-color:transparent; text-decoration:underline}
-a:active  {color:#ff0000; background-color:transparent; text-decoration:underline}
-</style>
 <body>
 	<center><h1> DIVA SHOP</h1>
 	<form action="/users/log_out" method="post">
@@ -22,3 +22,4 @@ a:active  {color:#ff0000; background-color:transparent; text-decoration:underlin
 </center>
 	</body>
 {% endblock %}
+</body>

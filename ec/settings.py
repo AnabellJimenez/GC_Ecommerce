@@ -37,9 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ec',
-    'users',
-    'items',
+    'ec', #added app
+    'users',#added app
+    'items',#added app
 )
 
 MIDDLEWARE_CLASSES = (
@@ -112,3 +112,6 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(PROJECT_ROOT, 'templates').replace('\\','/'),
 )
+
+
+STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__),'static'),)

@@ -1,0 +1,49 @@
+{% include "ec/base.html" %}
+
+
+<html>
+{% block content %}
+<center>
+<h1> PAYMENT PROCESSING</h1></center>
+<center><h2> ITEMS LIST </h2></center>
+
+{% if item_list %}
+    <ul>
+	{% for item in item_list %}
+			<li>{{item.name}}</li>
+ 
+        </form>
+	{% endfor %}
+
+{% endif %}
+<center>
+	<h2>TOTAL DUE: ${{price}}</h2>
+		</center>
+<center>
+	<form action = "/items/" method = "get">
+    <input type = "Submit" value = "SHOP">
+        </form>
+	</center>
+{%if purchased == False %}
+	<center>Enter Billing Information: </center>
+
+		<form action="/items/purchased" method="post">
+			{% csrf_token %}
+			Name on credit card: <br>
+			<input type = "text" name = "name">
+			<br>Credit Card Number: <br>
+			<input type = "text" name = "email">
+			<br>CC security code <br>
+			<input type = "text" name = "password">
+			<br>
+			<input type = "submit" value = "Submit payment">
+			<br>
+		</form>
+{% else %}
+	<h2> THANK YOU FOR YOUR PAYMENT </h2>
+{% endif %}
+
+
+	{% endblock %}
+
+</html>

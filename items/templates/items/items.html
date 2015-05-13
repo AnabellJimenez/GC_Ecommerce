@@ -1,19 +1,15 @@
-<div style="background-color:black; color:white; padding:20px;">
-
-<style>
-a:link    {color:white; background-color:transparent; text-decoration:none}
-a:visited {color:pink; background-color:transparent; text-decoration:none}
-a:hover   {color:white; background-color:transparent; text-decoration:underline}
-a:active  {color:#ff0000; background-color:transparent; text-decoration:underline}
-</style>
-
-<html>
+{% include "ec/base.html" %}
+{% block content %}
  <center>
-<h1> ITEMS LIST </h1></center>
+
+    {% if user %}
+    {% endif %}
+<h1> ITEMS LIST</h1></center>
 {% if items %}
     <ul>
     {% for item in items %}
-        <li>{{ item.name }}</li>
+        <li>{{ item.name }}
+</li>
        	<p> Cost($): 	
        		{{ item.price }} </p>
         <p> Description:
@@ -61,3 +57,4 @@ a:active  {color:#ff0000; background-color:transparent; text-decoration:underlin
 </center>
 
 </html>
+{% endblock %}

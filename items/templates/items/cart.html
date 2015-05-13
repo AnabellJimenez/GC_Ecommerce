@@ -1,12 +1,8 @@
-<html>
-<div style="background-color:black; color:white; padding:20px;">
+{% include "ec/base.html" %}
 
-<style>
-a:link    {color:white; background-color:transparent; text-decoration:none}
-a:visited {color:pink; background-color:transparent; text-decoration:none}
-a:hover   {color:white; background-color:transparent; text-decoration:underline}
-a:active  {color:#ff0000; background-color:transparent; text-decoration:underline}
-</style>
+
+<html>
+{% block content %}
 <center>
 <h1> SHOPPING CART</h1></center>
 <center><h2> ITEMS LIST </h2></center>
@@ -22,9 +18,19 @@ a:active  {color:#ff0000; background-color:transparent; text-decoration:underlin
 
 {% endif %}
 <center>
+	<h2>TOTAL PRICE: ${{price}}</h2>
+		</center>
+<center>
 	<form action = "/items/" method = "get">
     <input type = "Submit" value = "SHOP">
         </form>
 	</center>
+
+<center>
+	<form action = "/items/payment" method = "get">
+    <input type = "Submit" value = "PAYMENT">
+        </form>
+	</center>
+	{% endblock %}
 
 </html>
