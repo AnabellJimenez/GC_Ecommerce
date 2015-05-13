@@ -1,6 +1,8 @@
 # GC_Ecommerce
 
 E-commerce site built using Django framework
+
+
 User can:
 Register
 Log in
